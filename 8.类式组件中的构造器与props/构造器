@@ -1,0 +1,1 @@
+构造器是否接收props是否传递给super取决于是否希望在构造器中通过this访问props

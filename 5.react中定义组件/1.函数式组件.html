@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>函数式组件</title>
+</head>
+<body>
+    <div id="test"></div>
+
+    <script type="text/javascript" src="../oJS/react.development.js"></script>
+    <script type="text/javascript" src="../oJS/react-dom.development.js"></script>
+    <script type="text/javascript" src="../oJS/babel.min.js"></script>
+
+    <script type="text/babel"> 
+    //  useState() 通过在函数组件里调用它来给组件添加一些内部 state。
+        // 1.创建函数式组件,函数定义组件时，函数名首字母必须大写
+        function Demo(){
+            console.log(this); //此处的this是undefined，因为babel编译后开启了严格模式
+            return <h1>函数式组件</h1>
+        }
+        // 2.渲染虚拟DOM到页面
+        ReactDOM.render(<Demo/>,document.getElementById('test'))
+        /*
+        执行了ReactDOM.render(<Demo/>,document.getElementById('test'))之后发生了什么：
+           1.React解析组件标签，找到了Demo组件
+           2.发现组件是使用函数定义的，随后调用该函数，
+           将返回的虚拟DOM转化为真实的DOM，随后呈现在页面上
+        */
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>受控组件</title>
+  </head>
+  <body>
+    <div id="test"></div>
+
+    <script type="text/javascript" src="../oJS/react.development.js"></script>
+    <script
+      type="text/javascript"
+      src="../oJS/react-dom.development.js"
+    ></script>
+    <script type="text/javascript" src="../oJS/babel.min.js"></script>
+
+    <script type="text/babel">
+      class Form extends React.Component {
+        //初始化状态
+        state={
+            username:'',
+            password:''
+        }
+        //保存用户名到状态中
+        saveUsername=(event)=>{
+            this.setState({username:event.target.value})
+            console.log(this.state);
+        }
+        //保存密码到状态中
+        savePassword=(event)=>{
+            // console.log(event.target.value);
+            this.setState({password:event.target.value})
+        }
+        handleSubmit = (event) => {
+            event.preventDefault() //阻止表单提交
+            const {username,password}=this.state
+            alert(username);
+         
+        };
+        render() {
+          return (
+            <form action="http://www.baidu.com" onSubmit={this.handleSubmit}>
+              姓名：<input onChange={this.saveUsername} type="text" name="username"/>
+              密码：<input onChange={this.savePassword} type="text" name="password"/>
+              <button>提交</button>
+            </form>
+          );
+        }
+      }
+      ReactDOM.render(<Form />, document.getElementById("test"));
+    </script>
+  </body>
+</html>

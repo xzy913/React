@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>验证Diffing算法</title>
+  </head>
+  <body>
+    <div id="test"></div>
+
+    <script type="text/javascript" src="../njs/react.development.js"></script>
+    <script
+      type="text/javascript"
+      src="../njs/react-dom.development.js"
+    ></script>
+    <script type="text/javascript" src="../njs/babel.min.js"></script>
+
+    <script type="text/babel">
+      class Add extends React.Component {
+        state = {
+          persons: [
+            { id: 1, name: "Tom", age: 18 },
+            { id: 2, name: "jack", age: 19 },
+          ],
+        };
+        add = () => {
+            console.log(this.state.persons);
+          const { persons } = this.state;
+          const p = { id: persons.length + 1, name: "jerry", age: 20 };
+          this.setState({ persons: [p, ...persons] });
+        };
+
+        render() {
+          return (
+            <div>
+              <button onClick={this.add}>添加数据</button>
+              <ul>
+                {this.state.persons.map((personsObj, index) => {
+                  return (
+                    <li key={personsObj.id}>
+                      {personsObj.name}:{personsObj.age} <input type="text" />{" "}
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          );
+        }
+      }
+      ReactDOM.render(<Add />, document.getElementById("test"));
+    </script>
+  </body>
+</html>

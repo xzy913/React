@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>创建ref</title>
+</head>
+<body>
+    <div id="test"></div>
+
+    <script type="text/javascript" src="../oJS/react.development.js"></script>
+    <script
+      type="text/javascript"
+      src="../oJS/react-dom.development.js"
+    ></script>
+    <script type="text/javascript" src="../oJS/babel.min.js"></script>
+
+    <script type="text/babel">
+        class Input extends React.Component{
+            myRef=React.createRef()
+            showData=()=>{
+                alert(this.myRef.current.value)
+            }
+            render(){
+                return(
+                    <div>
+                        <input ref={this.myRef} type="text"/>
+                        <button onClick={this.showData}>显示</button>
+                    </div>
+                )
+            }
+        }
+        ReactDOM.render(<Input/>,document.getElementById('test'))
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>props的基本使用</title>
+</head>
+<body>
+    <div id="test"></div>
+
+    <script type="text/javascript" src="../oJS/react.development.js"></script>
+    <script
+      type="text/javascript"
+      src="../oJS/react-dom.development.js"
+    ></script>
+    <script type="text/javascript" src="../oJS/babel.min.js"></script>
+
+    <script type="text/babel">
+        class Person extends React.Component{
+            render(){
+                console.log(this);
+                const {name,sex,age} =this.props
+                console.log(this);
+                return(
+                    <ul>
+                        <li>{name}</li>
+                        <li>{sex}</li>
+                        <li>{+age+1}</li>
+                    </ul>
+                )
+            }
+        }
+        // ReactDOM.render(<Person name="Tom" sex="男" age="18"/>,document.getElementById('test'))
+        const p ={name:"Tom",sex:"男",age:"18"}
+        ReactDOM.render(<Person {...p}/>,document.getElementById('test'))
+    </script>
+</body>
+</html>

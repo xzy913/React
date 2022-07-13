@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>前端JS框架列表</title>
+</head>
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="test"></div>
+
+    <!-- 引入核心库 -->
+    <script type="text/javascript" src="../oJS/react.development.js"></script>
+    <script type="text/javascript" src="../oJS/react-dom.development.js"></script>
+    <script type="text/javascript" src="../oJS/babel.min.js"></script>
+
+    <script type="text/babel"> //此处一定要写babel
+    // 模拟一些数据
+    const data = ['Angular','React','Vue']
+    // 1.创建虚拟DOM
+    const VDOM = (
+        <div>
+            <h1>前端JS框架列表</h1>
+            <ul>
+                { 
+                data.map((item)=>{
+                    return <li>{item}</li>
+                })
+                }
+            </ul>
+        </div>
+    )
+        // 2.渲染虚拟DOM到页面
+        ReactDOM.render(VDOM,document.getElementById('test'))
+    </script>
+</body>
+</html>
