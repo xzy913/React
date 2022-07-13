@@ -1,0 +1,6 @@
+.Item_con{
+    display: flex;
+}
+.li{
+    list-style-type: none;
+}
